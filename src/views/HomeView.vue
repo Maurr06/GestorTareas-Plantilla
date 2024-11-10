@@ -1,21 +1,5 @@
 <template>
     <div class="home text-center">
-        <nav class="navbar navbar-expand-lg navbar-light bg-primary text-white">
-            <div class="container">
-                <a class="navbar-brand text-white" href="/">Gestor de Tareas</a>
-                <div class="navbar-nav ml-auto">
-                    <a class="nav-item nav-link text-white" href="/addtask"
-                        >Añadir Tarea |
-                    </a>
-                    <a class="nav-item nav-link text-white" href="/tasklist"
-                        >Lista de Tareas |</a
-                    >
-                    <a class="nav-item nav-link text-white" href="/combinedlist"
-                        >Vista Combinada</a
-                    >
-                </div>
-            </div>
-        </nav>
 
         <div class="container mt-5">
             <h1 class="display-4 text-primary">

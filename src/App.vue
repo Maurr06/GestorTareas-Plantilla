@@ -10,7 +10,7 @@
                     <router-link class="nav-item nav-link text-white" href="/tasklist"
                         >Lista de Tareas |</router-link
                     >
-                    <router-link class="nav-item nav-link text-white" href="/combinedview"
+                    <router-link class="nav-item nav-link text-white" href="/combinedlist"
                         >Vista Combinada</router-link
                     >
                 </div>

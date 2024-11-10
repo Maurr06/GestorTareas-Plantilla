@@ -1,52 +1,61 @@
 <template>
     <div>
-        <h1>Lista de Tareas</h1>
-        <button @click="fetchTasks">Cargar Tareas</button>
-        <div v-if="tasks.length > 0">
-            <div v-for="task in tasks" :key="task.id">
-                <div>
-                    <h5 :style="{ textDecoration: task.completed ? 'line-through' : 'none' }">{{ task.todo }}</h5>
-                    <span>{{ task.completed ? 'Completada' : 'Pendiente' }}</span>
-                    <button @click="toggleTaskCompletion(task)">
-                        {{ task.completed ? 'Desmarcar' : 'Completar' }}
-                    </button>
-                    <button @click="deleteTask(task)">Eliminar</button>
+        <nav class="navbar navbar-expand-lg navbar-light bg-primary text-white">
+            <div class="container">
+                <a class="navbar-brand text-white" href="/">Gestor de Tareas</a>
+                <div class="navbar-nav ml-auto">
+                    <a class="nav-item nav-link text-white" href="/addtask">Añadir Tarea | </a>
+                    <a class="nav-item nav-link text-white" href="/tasklist">Lista de Tareas |</a>
+                    <a class="nav-item nav-link text-white" href="/combinedlist">Vista Combinada</a>
                 </div>
             </div>
+        </nav>
+
+        <h1 class="mt-5">Lista de Tareas</h1>
+        <button @click="fetchTasks" class="btn btn-dark row-col-2 gy-5">Cargar Tareas</button><br><br>
+        <div v-if="tasks.length > 0" class="row gy-5">
+            <!-- Utilizar el componente `TodoItem` para cada tarea -->
+            <TodoItem 
+                v-for="task in tasks" 
+                :key="task.id"
+                :title="task.todo" 
+                :completed="task.completed" 
+                @toggle-completion="toggleTaskCompletion(task)"
+                @delTodo="deleteTask(task)"
+            />
         </div>
     </div>
 </template>
 
 <script>
+import axios from 'axios';
+import TodoItem from '@/components/TodoItem.vue';
+
 export default {
     name: "TaskList",
+    components: {
+        TodoItem
+    },
     data() {
         return {
-            tasks: [], // Almacenamiento local de las tareas traídas de la API
+            tasks: [],
         };
     },
     methods: {
-        // Llamada para obtener las tareas desde la API externa
-        fetchTasks() {
-            // Aquí deberían realizar la solicitud a la API usando axios o fetch.
-            // La URL que usaremos es: https://dummyjson.com/todos
-
-            // Sugerencia: Intentar implementarlo con axios o fetch
+        async fetchTasks() {
+            try {
+                const response = await axios.get('https://dummyjson.com/todos');
+                this.tasks = response.data.todos;
+            } catch (error) {
+                console.error('Error fetching tasks:', error);
+            }
         },
-
-        // Cambiar el estado de una tarea (completada/no completada)
         toggleTaskCompletion(task) {
             task.completed = !task.completed;
         },
-
-        // Eliminar la tarea seleccionada
         deleteTask(task) {
             this.tasks = this.tasks.filter((t) => t.id !== task.id);
         },
     },
 };
 </script>
-
-<style scoped>
-/* Aquí pueden experimentar con estilos de tu preferencia */
-</style>

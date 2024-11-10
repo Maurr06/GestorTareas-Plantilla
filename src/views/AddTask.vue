@@ -1,24 +1,54 @@
 <template>
-    <div class="add-task-container">
-        <h1>Añadir Tarea</h1>
-        <div class="input-group">
-            <input 
-                v-model="newTask" 
-                @keyup.enter="addTask" 
-                placeholder="Añadir nueva tarea" 
-                class="task-input"
-            />
-            <button @click="addTask" class="add-button">Añadir</button>
-        </div>
+    <div>
+        <nav class="navbar navbar-expand-lg navbar-light bg-primary text-white">
+            <div class="container">
+                <a class="navbar-brand text-white" href="/">Gestor de Tareas</a>
+                <div class="navbar-nav ml-auto">
+                    <a class="nav-item nav-link text-white" href="/addtask"
+                        >Añadir Tarea |
+                    </a>
+                    <a class="nav-item nav-link text-white" href="/tasklist"
+                        >Lista de Tareas |</a
+                    >
+                    <a class="nav-item nav-link text-white" href="/combinedlist"
+                        >Vista Combinada</a
+                    >
+                </div>
+            </div>
+        </nav>
+        <div class="add-task-container container mt-5">
+            <h1>Añadir Tarea</h1>
+            <div class="input-group">
+                <input
+                    v-model="newTask"
+                    @keyup.enter="addTask"
+                    placeholder="Añadir nueva tarea"
+                    class="task-input shadow p-3 bg-body rounded"
+                />
+                <button @click="addTask" class="btn btn-dark shadow">
+                    Añadir
+                </button>
+            </div>
 
-        <div v-if="tasks.length > 0" class="task-list">
-            <div v-for="task in tasks" :key="task.id" class="task-item">
-                <span :class="{ completed: task.completed }">{{ task.todo }}</span>
-                <div>
-                    <button @click="toggleTaskCompletion(task)">
-                        {{ task.completed ? 'Desmarcar' : 'Completar' }}
-                    </button>
-                    <button @click="deleteTask(task)">Eliminar</button>
+            <div v-if="tasks.length > 0" class="task-list">
+                <div v-for="task in tasks" :key="task.id" class="task-item">
+                    <span :class="{ completed: task.completed }">{{
+                        task.todo
+                    }}</span>
+                    <div>
+                        <button
+                            @click="toggleTaskCompletion(task)"
+                            class="btn btn-primary"
+                        >
+                            {{ task.completed ? "Desmarcar" : "Completar" }}
+                        </button>
+                        <button
+                            @click="deleteTask(task)"
+                            class="btn btn-secondary"
+                        >
+                            Eliminar
+                        </button>
+                    </div>
                 </div>
             </div>
         </div>
@@ -31,7 +61,7 @@ export default {
     data() {
         return {
             newTask: "", // Campo de entrada para la nueva tarea
-            tasks: [],   // Lista de tareas locales
+            tasks: [], // Lista de tareas locales
         };
     },
     methods: {
@@ -41,7 +71,7 @@ export default {
             const newTask = {
                 todo: this.newTask,
                 completed: false,
-                id: Date.now(), 
+                id: Date.now(),
             };
 
             // Añadir la nueva tarea al inicio de la lista

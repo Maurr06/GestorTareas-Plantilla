@@ -45,27 +45,27 @@ export default {
 </script>
 
 <style scoped>
-.home {
-    font-family: Arial, sans-serif;
-}
+    .home {
+        font-family: Arial, sans-serif;
+    }
 
-.navbar {
-    font-size: 1.1rem;
-}
+    .navbar {
+        font-size: 1.1rem;
+    }
 
-.list-unstyled li {
-    font-size: 1rem;
-    color: #555;
-    margin-top: 0.5rem;
-}
-.mi-foto{
-    margin: 5rem;
-    width: 300px;
-    border-radius: 50%;
-    border: 5px solid black;
-}
-.mi-foto:hover{
-    border-color: green;
-}
+    .list-unstyled li {
+        font-size: 1rem;
+        color: #555;
+        margin-top: 0.5rem;
+    }
+    .mi-foto{
+        margin: 5rem;
+        width: 300px;
+        border-radius: 50%;
+        border: 5px solid black;
+    }
+    .mi-foto:hover{
+        border-color: green;
+    }
 
 </style>

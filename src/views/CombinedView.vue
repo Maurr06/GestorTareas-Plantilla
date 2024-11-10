@@ -6,7 +6,6 @@
 
             <!-- Sección para agregar tareas manualmente -->
             <div class="add-task-section">
-                <h2>Añadir Tarea Manualmente</h2>
                 <div class="input-group">
                     <input
                         v-model="newTask"
@@ -20,28 +19,15 @@
                 </div>
             </div>
 
-            <!-- Botón para cargar tareas desde la API -->
-            <div class="fetch-task-section">
-                <h2>Extraer Tareas de la API</h2>
-                <button @click="fetchTasks" class="btn btn-dark">
-                    <i class="bi bi-arrow-repeat"></i> Cargar Tareas de la API
-                </button>
-            </div>
             <!-- Lista combinada de tareas manuales y de la API -->
             <div class="task-list-section">
                 <h2>Lista Combinada de Tareas</h2>
                 <div v-if="tasks.length > 0" class="task-list">
                     <div v-for="task in tasks" :key="task.id" class="task-item">
-                        <span :class="{ completed: task.completed }">{{
-                            task.todo
-                        }}</span>
+                        <span :class="{ completed: task.completed }">{{task.todo}}</span>
                         <div>
-                            <button
-                                @click="toggleTaskCompletion(task)"
-                                class="btn btn-primary"
-                            >
-                                <i
-                                    :class="
+                            <button @click="toggleTaskCompletion(task)" class="btn btn-primary">
+                                <i :class="
                                         task.completed
                                             ? 'bi bi-x-lg'
                                             : 'bi bi-check-lg'
@@ -73,6 +59,9 @@ export default {
             newTask: "",
             tasks: [], // Lista de tareas combinada (manuales y de API)
         };
+    },
+    created(){
+        this.fetchTasks();
     },
     methods: {
         // Añadir tarea manualmente

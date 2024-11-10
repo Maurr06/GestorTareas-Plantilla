@@ -1,22 +1,16 @@
 <template>
     <div id="app">
-        <nav class="navbar navbar-expand-lg navbar-light bg-primary text-white">
-            <div class="container">
-                <a class="navbar-brand text-white" href="/">Gestor de Tareas</a>
-                <div class="navbar-nav ml-auto">
-                    <router-link class="nav-item nav-link text-white" href="/addtask"
-                        >Añadir Tarea |
-                    </router-link>
-                    <router-link class="nav-item nav-link text-white" href="/tasklist"
-                        >Lista de Tareas |</router-link
-                    >
-                    <router-link class="nav-item nav-link text-white" href="/combinedlist"
-                        >Vista Combinada</router-link
-                    >
+            <nav class="navbar navbar-expand-lg navbar-light bg-primary text-white">
+                <div class="container">
+                    <router-link class="navbar-brand text-white" to="/">Gestor de Tareas</router-link>
+                    <div class="navbar-nav ml-auto">
+                        <router-link class="nav-item nav-link text-white" to="/addtask">Añadir Tarea |</router-link>
+                        <router-link class="nav-item nav-link text-white" to="/tasklist">Lista de Tareas |</router-link>
+                        <router-link class="nav-item nav-link text-white" to="/combinedlist">Vista Combinada</router-link>
+                    </div>
                 </div>
-            </div>
-        </nav>
-        <router-view />
+            </nav>
+        <router-view/>
     </div>
 </template>
 

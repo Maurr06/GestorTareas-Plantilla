@@ -2,6 +2,10 @@ import Vue from 'vue';
 import VueRouter from 'vue-router';
 import HomeView from '../views/HomeView.vue';
 import AddTask from '@/views/AddTask.vue';
+import TaskList from '@/views/TaskList.vue';
+import CombinedView from '@/views/CombinedView.vue';
+
+
 // Importa los otros componentes en esta sección
 
 Vue.use(VueRouter);
@@ -21,12 +25,12 @@ const routes = [
   {
     path: '/tasklist',
     name: 'tasklist',
-    component: () => import(/* webpackChunkName: "about" */ '../views/TaskList.vue')
+    component: TaskList
   }, 
   {
     path: '/combinedlist',
     name: 'combinedlist',
-    component: () => import(/* webpackChunkName: "about" */ '../views/CombinedView.vue')
+    component: CombinedView
   }, 
 ];
 

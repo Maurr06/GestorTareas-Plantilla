@@ -24,12 +24,12 @@ const routes = [
   },
   {
     path: '/tasklist',
-    name: 'tasklist',
+    name: 'TaskList',
     component: TaskList
   }, 
   {
     path: '/combinedlist',
-    name: 'combinedlist',
+    name: 'CombinedView',
     component: CombinedView
   }, 
 ];
